@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Expenses Tracker</title>
+    <style>
+        body {
+            background-color: #001D00; /* Royal Green */
+            color: #B38728; /* Beige */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #B38728; /* Beige */
+            color: #001D00; /* Royal Green */
+            border: 2px solid #B38728; /* Gold */
+            border-radius: 10px;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #d4af37; /* Gold */
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #d4af37; /* Gold */
+            color: #f5f5dc; /* Beige */
+        }
+        a {
+            color: #014421; /* Royal Green */
+            font-weight: bold;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .warning {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #001D00; /* Dark Royal Green */
+            color: #f5f5dc; /* Beige */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .button:hover {
+            background-color: #d4af37; /* Gold */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Expenses Tracker</h1>
+        <p class="bold">Monthly Allowance: ${{ allowance }}</p>
+        <p class="bold">Total Expenses: ${{ total_expenses }}</p>
+        <p class="bold">Remaining Allowance: ${{ remaining_allowance }}</p>
+
+        {% if total_expenses > allowance %}
+        <p class="warning">Warning! You have spent more than your allocated budget. Consider cutting back on the next purchase.</p>
+        {% endif %}
+
+        <a href="/set_allowance" class="button">Set Monthly Allowance</a> | <a href="/add" class="button">Add New Expense</a>
+
+        <table>
+            <tr>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+            {% for expense in expenses %}
+            <tr>
+                <td>{{ expense.description }}</td>
+                <td>${{ expense.amount }}</td>
+                <td>{{ expense.date }}</td> <!-- Displaying the date of the expense -->
+                <td><a href="/delete/{{ loop.index0 }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

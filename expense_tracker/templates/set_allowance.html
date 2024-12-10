@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Monthly Allowance</title>
+    <style>
+        body {
+            background-color: #66daec; /* Sky Blue */
+            color: #094650; /* Dark Blue */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        form {
+            background-color: #f6fbfc; /* White */
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 400px;
+            border: 2px solid #8a8f90;
+        }
+        input[type="number"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        input[type="submit"] {
+            background-color: #094650; /* Dark Blue */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #8a8f90;
+        }
+    </style>
+</head>
+<body>
+    <h1>Set Your Monthly Allowance</h1>
+    <form method="POST">
+        <label for="allowance">Allowance Amount:</label><br>
+        <input type="number" id="allowance" name="allowance" required><br>
+        <input type="submit" value="Set Allowance">
+    </form>
+    <p><a href="/">Go Back</a></p>
+</body>
+</html>
